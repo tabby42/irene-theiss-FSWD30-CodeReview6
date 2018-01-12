@@ -2,10 +2,14 @@ $alfa: 'Alfa Slab One', cursive;
 $robotoSlab: 'Roboto Slab', sans-serif;
 $base-font-size: 14px;
 $letter-spacing-default: 1px;
+.italic {
+	font-style: italic;
+}
 
 /*Colors*/
 $dark: #1C1F23;
 $white: #fff;
+$beige: #83715C;
 
 body {
 	font-family: $robotoSlab;
@@ -13,7 +17,7 @@ body {
 	font-size: $base-font-size;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4{
 	font-family: $alfa;
 }
 
@@ -40,6 +44,8 @@ header {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	-webkit-filter: grayscale(60%);
+	        filter: grayscale(60%);
 	h1 {
 		color: $white;
 		font-size: ($base-font-size * 4);
@@ -66,9 +72,9 @@ header {
 	color: $white;
 }
 
-.img-circle {
-	max-width: 300px;
-}
+/* .img-circle {*/
+/* 	max-width: 300px;*/
+/* }*/
 
 .pad-row {
 	padding: 100px 0px;
@@ -81,12 +87,55 @@ header {
 .media-container {
 	.media-item {
 		.media {
-			padding: 10px;
+			    padding: 10px;
+			    min-height: 480px;
+			    margin-bottom: 30px;
+			    border: 4px solid #fff;
 			img {
 				max-width: 100px;
+				-webkit-filter: grayscale(60%);
+				        filter: grayscale(60%);
+	            display: inline-block;
+			    margin: 0 auto;
+			    position: relative;
+			    left: 50%;
+			    -webkit-transform: translateX(-50%);
+			            transform: translateX(-50%);
+	            border-radius: 0;
+	            border-color: $white;
 			}
 			.media-body {
 				color: $white;
+			}
+			.media-center {
+				position: relative;
+			    padding: 40px 0;
+			}
+            .media-heading {
+            	font-size: ($base-font-size * 2);
+            	letter-spacing: $letter-spacing-default;
+            }
+            h6 {
+        	    font-size: $base-font-size;
+    			line-height: 1.2;
+    			padding-bottom: 10px;
+            }
+            .label {
+            	font-size: ($base-font-size - 2);
+            	border-radius: 0;
+            	display: inline-block;
+            	margin: 0 3px;
+            	background-color: $beige;
+        	    padding: 7px 15px 9px;
+        	    text-transform: uppercase;
+            }
+			.glyphicon {
+				font-size: 20px;
+    			padding: 3px;
+    			color: $beige;
+			}
+			.rating {
+				padding: 15px 0;
 			}
 		}
 	}
