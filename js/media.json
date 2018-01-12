@@ -1,0 +1,42 @@
+var media = {
+    "Books": [
+        {
+        "id": "b1",
+        "title": "What If?",
+        "author": "Randall Munroe",
+        "genre": "non-fiction",
+        "publisher": "John Murray",
+        "image": "img/boy1.800x1000.jpg",  
+        "rating": 4
+        },
+        {
+        "id": "b2",
+        "title": "The Trespasser",
+        "author": "Tana French",
+        "genre": "fiction",
+        "publisher": "Hodder",
+        "image": "img/boy1.800x1000.jpg",  
+        "rating": 5
+        }
+    ],
+    "Comics": [
+        {
+        "id": "c1",
+        "title": "Maus",
+        "author": "Art Spiegelman",
+        "genre": "biography",
+        "publisher": "Penguin",
+        "image": "img/boy1.800x1000.jpg",  
+        "rating": 5
+        },
+        {
+        "id": "c2",
+        "title": "Lady Snowblood",
+        "author": "Kazuo Koike/Kazuo Kamimura",
+        "genre": "fiction",
+        "publisher": "Penguin",
+        "image": "img/boy1.800x1000.jpg",  
+        "rating": 4
+        }
+    ]
+}

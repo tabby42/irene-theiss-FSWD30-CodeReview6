@@ -1,0 +1,59 @@
+/*Colors*/
+body {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 14px; }
+
+h1, h2, h3, h4 {
+  font-family: "Alfa Slab One", cursive; }
+
+.navbar {
+  border-radius: 0; }
+  .navbar.navbar-default {
+    background-color: transparent;
+    border: 0; }
+  .navbar .navbar-brand {
+    color: #fff; }
+  .navbar .glyphicon.glyphicon-plus {
+    color: #1C1F23;
+    background-color: #fff;
+    border-radius: 100%;
+    padding: 10px; }
+
+header {
+  min-height: 100vh;
+  background-image: url("../img/Books_for_Wanderers_Featured.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+  header h1 {
+    color: #fff;
+    font-size: 56px;
+    letter-spacing: 1px;
+    position: absolute;
+    width: 100%;
+    padding: 0 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    header h1 span {
+      display: block;
+      text-transform: none;
+      font-size: 21px;
+      font-family: "Roboto Slab", sans-serif;
+      font-style: italic; }
+
+.dark-bg {
+  background-color: #1C1F23;
+  color: #fff; }
+
+.img-circle {
+  max-width: 300px; }
+
+.pad-row {
+  padding: 100px 0px; }
+
+.pad-row-lr {
+  padding: 100px 50px; }
+
+/*# sourceMappingURL=style.css.map */
