@@ -1,13 +1,14 @@
 var media = {
-    "Books": [
+    "Items": [
         {
         "id": "b1",
         "title": "What If?",
         "author": "Randall Munroe",
         "genre": "non-fiction",
         "publisher": "John Murray",
-        "image": "img/boy1.800x1000.jpg",  
-        "rating": 4
+        "image": "img/dummyImg.png",  
+        "rating": 4,
+        "category": "Books"
         },
         {
         "id": "b2",
@@ -15,19 +16,19 @@ var media = {
         "author": "Tana French",
         "genre": "fiction",
         "publisher": "Hodder",
-        "image": "img/boy1.800x1000.jpg",  
-        "rating": 5
-        }
-    ],
-    "Comics": [
+        "image": "img/dummyImg.png",  
+        "rating": 5,
+        "category": "Books"
+        },
         {
         "id": "c1",
         "title": "Maus",
         "author": "Art Spiegelman",
         "genre": "biography",
         "publisher": "Penguin",
-        "image": "img/boy1.800x1000.jpg",  
-        "rating": 5
+        "image": "img/dummyImg.png",  
+        "rating": 5,
+        "category": "Comics"
         },
         {
         "id": "c2",
@@ -35,8 +36,9 @@ var media = {
         "author": "Kazuo Koike/Kazuo Kamimura",
         "genre": "fiction",
         "publisher": "Penguin",
-        "image": "img/boy1.800x1000.jpg",  
-        "rating": 4
+        "image": "img/dummyImg.png",  
+        "rating": 4,
+        "category": "Comics"
         }
     ]
 }
