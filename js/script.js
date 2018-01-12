@@ -15,18 +15,24 @@ jQuery(document).ready( function ($) {
 		//fill HTML Template with data from medialist
 		itemTemplate (id, title, author, genre, publisher, imageURL, rating, category) {
 			var tpl = `
-				<div class="col-lg-3 col-md-4 col-sm-6 media-item" data-id="${id}">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 media-item" data-id="${id}">
             		<div class="media">
-					  <div class="media-left">
-					      <img class="media-object" src="${imageURL}" alt="Media Thumbnail">
+					  <div class="media-center">
+					      <img class="media-object thumbnail" src="${imageURL}" alt="Media Thumbnail">
 					  </div>
-					  <div class="media-body">
-					    <h4 class="media-heading">${title}</h4>
-					    <h6>by ${author} | published by ${publisher}</h6>
-					    <span class="label label-default">${category}</span>
-					    <span class="label label-default">${genre}</span>
-
-					  </div>
+					  <div class="media-body text-center">
+					  <h4 class="media-heading text-uppercase">${title}</h4>
+					    <h6>by <span class="italic">${author}</span> | published by <span class="italic">${publisher}<span></h6>
+					    <span class="label label-primary">${category}</span>
+					    <span class="label label-info">${genre}</span>
+					    <div class="rating">`;
+					    for (var i = 0; i < rating; i++) {
+					    	tpl += `<span class="glyphicon glyphicon-star" aria-hidden="true"></span>`
+				    	}
+					    for (var i = 0; i < 5 - rating; i++) {
+					    	tpl += `<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>`
+					    }
+					tpl += `</div></div>
 					</div>
         		</div>
 			`;
@@ -45,6 +51,10 @@ jQuery(document).ready( function ($) {
 					mediaArray[i].image, mediaArray[i].rating, mediaArray[i].category);
 				this.wrapper.append(toAppend);
 			}
+		}
+
+		addMedia () {
+			
 		}
 	}
 
