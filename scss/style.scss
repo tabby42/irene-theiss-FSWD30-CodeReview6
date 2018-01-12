@@ -78,5 +78,19 @@ header {
 	padding: 100px 50px;
 }
 
+.media-container {
+	.media-item {
+		.media {
+			padding: 10px;
+			img {
+				max-width: 100px;
+			}
+			.media-body {
+				color: $white;
+			}
+		}
+	}
+}
+
 
 

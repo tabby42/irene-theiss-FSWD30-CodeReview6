@@ -56,4 +56,11 @@ header {
 .pad-row-lr {
   padding: 100px 50px; }
 
+.media-container .media-item .media {
+  padding: 10px; }
+  .media-container .media-item .media img {
+    max-width: 100px; }
+  .media-container .media-item .media .media-body {
+    color: #fff; }
+
 /*# sourceMappingURL=style.css.map */
