@@ -24,8 +24,8 @@ jQuery(document).ready( function ($) {
 			this.displayMedia(medialist);
 		}
 
-		//fill HTML Template with data from medialist
 		itemTemplate (id, title, author, genre, publisher, imageURL, rating, category) {
+			//fill HTML Template with data from medialist
 			var tpl = `
 				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 media-item" data-id="${id}">
             		<div class="media">
@@ -54,6 +54,7 @@ jQuery(document).ready( function ($) {
 
 		displayMedia (mediaArray) {
 			var toAppend = "";
+			this.wrapper.empty();
 			//loop through all items of medialist, call template-function on each iteration
 			//fill with data and append to container-element
 			for (var i = 0; i < mediaArray.length; i++) {
@@ -66,9 +67,9 @@ jQuery(document).ready( function ($) {
 		}
 
 		addMedia (author, category, genre, imageURL, publisher, rating, title) {
+			//create new MediaItem and add it to list
 			var newItem = new MediaItem(author, category, genre, imageURL, 
 				publisher, rating, title, this.medialist);
-			// newItem = JSON.stringify(newItem);
 			this.medialist.push(newItem);
 		}
 	}
@@ -80,7 +81,9 @@ jQuery(document).ready( function ($) {
 		inputCat = $("#category"),
 		inputGenre = $("#genre"),
 		inputRating = $("#rating"),
-		inputImg = $("#thumbnail");
+		inputImg = $("#thumbnail"),
+		inputlist = [inputTitle, inputAuthor, inputPub, inputCat, inputGenre, inputRating, inputImg];
+
 
 	//create instance of MediaList
 	var medialist = new MediaList(media["Items"], $(".media-container"));
@@ -88,12 +91,42 @@ jQuery(document).ready( function ($) {
 	//process form data
 	$("#saveData").on("click", function() {
 		// var filePath = "img/" + inputImg.val().split('\\').pop();
-		medialist.addMedia(inputAuthor.val(), inputCat.val(),
-			inputGenre.val(), "img/dummyImg.png", inputPub.val(), 
-			inputRating.val(), inputTitle.val());
-		console.log(medialist);
+		//add new item with dummy image, since project is not on a webserver
+		//TODO: save image in localStorage?
+		if (checkInput()) {
+			//add new media item to list
+			medialist.addMedia(inputAuthor.val(), inputCat.val(),
+				inputGenre.val(), "img/dummyImg.png", inputPub.val(), 
+				parseInt(inputRating.val()), inputTitle.val());
+			console.log(medialist);
+			//update display
+			medialist.displayMedia(medialist.medialist);
+			
+		} else {
+			//alert("check input");
+		}
 	});
 
+	$("#reset").on("click", function() {
+		//empty input fields
+		for (var i = 0; i < inputlist.length; i++) {
+			inputlist[i].val("");
+		}
+	});
+
+	function checkInput () {
+		//check if input fields have been filled
+		if ( inputAuthor.val() !== "" && inputGenre.val() !== "" && inputPub.val() !== ""
+			&& inputRating.val() !== ""  && inputTitle.val() !== "" 
+			&& inputCat.val() !== "..." && inputCat.val() !== null) {
+			$(".form-group").removeClass("has-error");
+			$(".form-group").addClass("has-success");
+			return true;
+		} else {
+			$(".form-group").addClass("has-error");
+			return false;
+		}
+	}
 
 
 });
