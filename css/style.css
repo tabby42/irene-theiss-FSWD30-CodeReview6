@@ -64,6 +64,9 @@ header {
       padding: 10px; }
       header h1 span small {
         color: #fff; }
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 35px; } }
 
 .media-container .media-item .media {
   padding: 10px;
