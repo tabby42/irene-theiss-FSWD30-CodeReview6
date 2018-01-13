@@ -70,6 +70,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <p class="bg-danger hidden">Please check your input!</p>
           </div>
           <div class="modal-body">
             <form accept-charset="utf-8" onsubmit="return false;">
@@ -77,14 +78,19 @@
                 <label for="title">Title *</label>
                 <input type="text" class="form-control" id="title" placeholder="Title" required>
                 <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>
               </div>
-              <div class="form-group">
+              <div class="form-group has-feedback">
                 <label for="author">Author *</label>
-                <input type="text" class="form-control" id="author" placeholder="Author" >
+                <input type="text" class="form-control" id="author" placeholder="Author" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>
               </div>
-              <div class="form-group">
+              <div class="form-group has-feedback">
                 <label for="publisher">Publisher*</label>
                 <input type="text" class="form-control" id="publisher" placeholder="Publisher" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>
               </div>
               <div class="form-group">
                 <label for="category">Category *</label>
@@ -96,18 +102,22 @@
                   <option value="music">Music</option>
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group has-feedback">
                 <label for="genre">Genre *</label>
                 <input type="text" class="form-control" id="genre" placeholder="Genre" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>
               </div>
-              <div class="form-group">
+              <div class="form-group has-feedback">
                 <label for="rating">Rating *</label>
                 <input type="number" class="form-control" id="rating" placeholder="Rating" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>
               </div>
               <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
                 <input type="file" id="thumbnail">
-                <p class="help-block">Example block-level help text here.</p>
+                <!-- <p class="help-block">Example block-level help text here.</p> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="reset">Reset</button>
