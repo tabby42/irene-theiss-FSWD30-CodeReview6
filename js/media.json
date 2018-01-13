@@ -1,18 +1,18 @@
 var media = {
     "Items": [
         {
-        "id": "b1",
+        "id": 1,
         "title": "What If?",
         "author": "Randall Munroe",
         "genre": "Non-fiction",
         "publisher": "John Murray",
         "image": "img/whatif.jpg",  
-        "rating": 4,
+        "rating": 3,
         "category": "Books",
-        "tags": ["funny"]
+        "tags": ["funny", "new"]
         },
         {
-        "id": "b2",
+        "id": 2,
         "title": "The Trespasser",
         "author": "Tana French",
         "genre": "fiction",
@@ -23,7 +23,7 @@ var media = {
         "tags": ["Crime", "Suspense"]
         },
         {
-        "id": "c1",
+        "id": 3,
         "title": "Maus",
         "author": "Art Spiegelman",
         "genre": "Biography",
@@ -34,7 +34,7 @@ var media = {
         "tags": ["History", "Graphic Novel"]
         },
         {
-        "id": "c2",
+        "id": 4,
         "title": "Lady Snowblood",
         "author": "Kazuo Koike/Kazuo Kamimura",
         "genre": "fiction",
@@ -43,6 +43,29 @@ var media = {
         "rating": 4,
         "category": "Comics",
         "tags": ["Manga", "Series"]
+        },
+        {
+        "id": 5,
+        "title": "The Last Jedi",
+        "author": "George Lucas",
+        "genre": "Science Fiction",
+        "publisher": "Disney",
+        "image": "img/dummyImg.png",  
+        "rating": 3,
+        "category": "Movies",
+        "tags": ["new", "sequel"]
+        }
+        ,
+        {
+        "id": 6,
+        "title": "Some like it hot",
+        "author": "Billy Wilder",
+        "genre": "Comedy",
+        "publisher": "Metro Goldwyn Meyer",
+        "image": "img/dummyImg.png",  
+        "rating": 4,
+        "category": "Movies",
+        "tags": ["classic", "screwball"]
         }
     ]
 }
