@@ -1,7 +1,7 @@
 jQuery(document).ready( function ($) {
 	//console.log(media);
 	class MediaItem {
-		constructor(id, title, author, genre, publisher, imageURL, rating, category, medialist) {
+		constructor(author, category, genre, imageURL, publisher, rating, title, medialist) {
 			this.title = title;
 			this.author = author;
 			this.genre = genre;
@@ -9,7 +9,7 @@ jQuery(document).ready( function ($) {
 			this.image = imageURL;
 			this.rating = rating;
 			this.category = category;
-			createId(medialist);
+			this.createId(medialist);
 		}
 
 		createId (mediaArray) {
@@ -23,6 +23,7 @@ jQuery(document).ready( function ($) {
 			this.wrapper = wrapper;
 			this.displayMedia(medialist);
 		}
+
 		//fill HTML Template with data from medialist
 		itemTemplate (id, title, author, genre, publisher, imageURL, rating, category) {
 			var tpl = `
@@ -53,7 +54,7 @@ jQuery(document).ready( function ($) {
 
 		displayMedia (mediaArray) {
 			var toAppend = "";
-			//loop through all items, call template-function on each iteration
+			//loop through all items of medialist, call template-function on each iteration
 			//fill with data and append to container-element
 			for (var i = 0; i < mediaArray.length; i++) {
 				toAppend = this.itemTemplate(mediaArray[i].id, 
@@ -64,11 +65,35 @@ jQuery(document).ready( function ($) {
 			}
 		}
 
-		addMedia () {
-
+		addMedia (author, category, genre, imageURL, publisher, rating, title) {
+			var newItem = new MediaItem(author, category, genre, imageURL, 
+				publisher, rating, title, this.medialist);
+			// newItem = JSON.stringify(newItem);
+			this.medialist.push(newItem);
 		}
 	}
 
+	//variables for form inputs
+	var inputTitle = $("#title"),
+		inputAuthor = $("#author"),
+		inputPub = $("#publisher"),
+		inputCat = $("#category"),
+		inputGenre = $("#genre"),
+		inputRating = $("#rating"),
+		inputImg = $("#thumbnail");
+
 	//create instance of MediaList
 	var medialist = new MediaList(media["Items"], $(".media-container"));
+
+	//process form data
+	$("#saveData").on("click", function() {
+		// var filePath = "img/" + inputImg.val().split('\\').pop();
+		medialist.addMedia(inputAuthor.val(), inputCat.val(),
+			inputGenre.val(), "img/dummyImg.png", inputPub.val(), 
+			inputRating.val(), inputTitle.val());
+		console.log(medialist);
+	});
+
+
+
 });
