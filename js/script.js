@@ -1,5 +1,8 @@
 jQuery(document).ready( function ($) {
 	//console.log(media);
+	/*
+	***	class for single media item  ***
+	*/
 	class MediaItem {
 		constructor(author, category, genre, imageURL, publisher, rating, title, medialist) {
 			this.title = title;
@@ -17,6 +20,9 @@ jQuery(document).ready( function ($) {
 		}
 	}
 
+	/*
+	***	class for list of media items  ***
+	*/
 	class MediaList {
 		constructor (medialist, wrapper) {
 			this.medialist = medialist;
@@ -48,7 +54,6 @@ jQuery(document).ready( function ($) {
 					</div>
         		</div>
 			`;
-			//console.log(tpl);
 			return $(tpl);
 		}
 
@@ -88,6 +93,9 @@ jQuery(document).ready( function ($) {
 	//create instance of MediaList
 	var medialist = new MediaList(media["Items"], $(".media-container"));
 
+	/*
+	**+	Process and validate form input  ***
+	*/
 	//variables for form inputs
 	var inputTitle = $("#title"),
 		inputAuthor = $("#author"),
@@ -98,7 +106,7 @@ jQuery(document).ready( function ($) {
 		inputImg = $("#thumbnail"),
 		inputlist = [inputTitle, inputAuthor, inputPub, inputCat, inputGenre, inputRating, inputImg];
 
-	//process form data
+	//save button -> process form data
 	$("#saveData").on("click", function() {
 		// var filePath = "img/" + inputImg.val().split('\\').pop();
 		//add new item with dummy image, since project is not on a webserver
@@ -108,48 +116,19 @@ jQuery(document).ready( function ($) {
 			medialist.addMedia(inputAuthor.val(), inputCat.val(),
 				inputGenre.val(), "img/dummyImg.png", inputPub.val(), 
 				parseInt(inputRating.val()), inputTitle.val());
-			console.log(medialist);
+			//console.log(medialist);
 			//hide error message if visible
 			if (!$(".bg-danger").hasClass("hidden")) {
 				$(".bg-danger").addClass("hidden");
 			}
-			//update display
+			//update display with added item
 			medialist.displayMedia(medialist.medialist);
 		} else {
 			$(".bg-danger.normal-danger").removeClass("hidden");
 		}
 	});
 
-	//check text input on blur
-	$("input[type='text'], select").on("blur", function () {
-		//validate input and give feedback to user
-		if (medialist.validateValue($(this).val()) === true) {
-			caseSuccess($(this));
-			if (!$(".bg-danger.special-danger").hasClass("hidden")) {
-				$(".bg-danger.special-danger").addClass("hidden");
-			}
-		} else if (medialist.validateValue($(this).val()) === -1) {
-			//handle special case of Danielle Steel or Roland Emmerich
-			$(".bg-danger.special-danger").removeClass("hidden");
-			$(this).parent().addClass("has-error");
-			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
-		} else {
-			caseError($(this));
-		}
-	});
-
-	//check number input on blur
-	$("input[type='number']").on("blur", function () {
-		var value = parseInt($(this).val());
-		//validate input and give feedback to user
-		if (value !== NaN && value >= 1 && value <= 5) {
-			caseSuccess($(this));
-		} else {
-			caseError($(this));
-		}
-	});
-
-	//reset form
+	//reset form button
 	$("#reset").on("click", function() {
 		//empty input fields
 		for (var i = 0; i < inputlist.length; i++) {
@@ -160,13 +139,43 @@ jQuery(document).ready( function ($) {
 		$(".form-group").removeClass("has-error").removeClass("has-success").find(".glyphicon").addClass("hidden");
 	});
 
+	//check text and select input on change
+	$("input[type='text'], select").on("blur", function () {
+		//validate input and give feedback to user
+		if (medialist.validateValue($(this).val()) === true) {
+			caseSuccess($(this));
+			$(".bg-danger.special-danger").addClass("hidden");
+		} else if (medialist.validateValue($(this).val()) === -1) {
+			//handle special case of Danielle Steel or Roland Emmerich
+			$(".bg-danger.special-danger").removeClass("hidden");
+			$(this).parent().addClass("has-error");
+			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
+		} else {
+			caseError($(this));
+		}
+	});
+
+	//check number input on change
+	$("input[type='number']").on("blur", function () {
+		var value = parseInt($(this).val());
+		//validate input and give feedback to user
+		if (value !== NaN && value >= 1 && value <= 5) {
+			caseSuccess($(this));
+		} else {
+			caseError($(this));
+		}
+	});
+
+	//check again if all input fields have been filled appropriately
 	function checkInputOnSave () {
-		//check again if all input fields have been filled appropriately
 		if ( inputAuthor.val() !== "" && inputAuthor.val() !== "Danielle Steel" 
 			&& inputAuthor.val() !== "Roland Emmerich" && inputGenre.val() !== "" && inputPub.val() !== ""
 			&& inputRating.val() !== ""  && inputTitle.val() !== "" 
 			&& inputCat.val() !== "..." && inputCat.val() !== null) {
 			return true;
+		} else if (inputAuthor.val() === "Danielle Steel" 
+			|| inputAuthor.val() === "Roland Emmerich") {
+			$(".bg-danger.special-danger").removeClass("hidden");
 		} else {
 			return false;
 		}
@@ -186,4 +195,31 @@ jQuery(document).ready( function ($) {
 		elem.parent().addClass("has-error");
 		elem.parent().find(".glyphicon-remove").removeClass("hidden");
 	}
+
+	//test data buttons
+	$("#fillTestData").on("click", function () {
+		//inputlist = [inputTitle, inputAuthor, inputPub, inputCat, inputGenre, inputRating, inputImg];
+		inputTitle.val("Das Detail in der Typographie");
+		inputAuthor.val("Jost Hochuli");
+		inputPub.val("Niggli Verlag");
+		inputCat.val("books");
+		inputGenre.val("non-fiction");
+		inputRating.val("5");
+		$("input[type='text'], select").trigger("change");
+		$("input[type='number']").trigger("change");
+	});
+
+	$("#fillBaloney").on("click", function () {
+		//inputlist = [inputTitle, inputAuthor, inputPub, inputCat, inputGenre, inputRating, inputImg];
+		inputTitle.val("");
+		inputAuthor.val("Danielle Steel");
+		inputPub.val("foo");
+		inputCat.val("...");
+		inputGenre.val("bar");
+		inputRating.val("12");
+		$("input[type='text'], select").trigger("blur");
+		$("input[type='number']").trigger("blur");
+		$(".bg-danger.special-danger").removeClass("hidden");
+	});
+
 });
