@@ -1,14 +1,16 @@
+/*font-related stuff*/
 .italic {
   font-style: italic; }
 
+h1, h2, h3, h4 {
+  font-family: "Alfa Slab One", cursive; }
+
 /*Colors*/
+/*Layout Elements*/
 body {
   font-family: "Roboto Slab", sans-serif;
   font-weight: 400;
   font-size: 14px; }
-
-h1, h2, h3, h4 {
-  font-family: "Alfa Slab One", cursive; }
 
 .navbar {
   border-radius: 0; }
@@ -16,7 +18,21 @@ h1, h2, h3, h4 {
     background-color: transparent;
     border: 0; }
   .navbar .navbar-brand {
-    color: #fff; }
+    color: #fff;
+    outline: 0;
+    font-size: 12px;
+    border-radius: 0;
+    background-color: #83715C;
+    padding: 7px 15px 9px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    .navbar .navbar-brand .add-item {
+      display: inline-block;
+      margin-left: 10px; }
+    .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+      background-color: #473d32;
+      color: #fff; }
   .navbar .glyphicon.glyphicon-plus {
     color: #1C1F23;
     background-color: #fff;
@@ -44,22 +60,10 @@ header {
     header h1 span {
       display: block;
       text-transform: none;
-      font-size: 21px;
-      font-family: "Roboto Slab", sans-serif;
-      font-style: italic; }
-
-.dark-bg {
-  background-color: #1C1F23;
-  color: #fff; }
-
-/* .img-circle {*/
-/* 	max-width: 300px;*/
-/* }*/
-.pad-row {
-  padding: 100px 0px; }
-
-.pad-row-lr {
-  padding: 100px 50px; }
+      font-size: 28px;
+      padding: 10px; }
+      header h1 span small {
+        color: #fff; }
 
 .media-container .media-item .media {
   padding: 10px;
@@ -95,14 +99,31 @@ header {
     border-radius: 0;
     display: inline-block;
     margin: 0 3px;
-    background-color: #83715C;
+    background-color: #473d32;
     padding: 7px 15px 9px;
     text-transform: uppercase; }
+    .media-container .media-item .media .label.label-info {
+      background-color: #83715C; }
   .media-container .media-item .media .glyphicon {
     font-size: 20px;
     padding: 3px;
     color: #83715C; }
   .media-container .media-item .media .rating {
     padding: 15px 0; }
+
+#modal-form {
+  border-radius: 0;
+  border: 0; }
+
+/*helper classes*/
+.dark-bg {
+  background-color: #1C1F23;
+  color: #fff; }
+
+.pad-row {
+  padding: 100px 0px; }
+
+.pad-row-lr {
+  padding: 100px 50px; }
 
 /*# sourceMappingURL=style.css.map */
