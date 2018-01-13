@@ -74,7 +74,7 @@ jQuery(document).ready( function ($) {
 		}
 
 		validateValue (prop) {
-			if (prop !== "" && prop !== null && prop !== undefined) {
+			if (prop !== "" && prop !== null && prop !== undefined && prop !== "...") {
 				if (prop === "Danielle Steel" || prop === "Roland Emmerich") {
 					return -1;
 				}
@@ -121,7 +121,7 @@ jQuery(document).ready( function ($) {
 	});
 
 	//check text input on blur
-	$("input[type='text']").on("blur", function () {
+	$("input[type='text'], select").on("blur", function () {
 		//validate input and give feedback to user
 		if (medialist.validateValue($(this).val()) === true) {
 			caseSuccess($(this));
@@ -156,11 +156,12 @@ jQuery(document).ready( function ($) {
 			inputlist[i].val("");
 		}
 		//remove feedback
+		$(".bg-danger").addClass("hidden");
 		$(".form-group").removeClass("has-error").removeClass("has-success").find(".glyphicon").addClass("hidden");
 	});
 
 	function checkInputOnSave () {
-		//check again if all input fields have been filled
+		//check again if all input fields have been filled appropriately
 		if ( inputAuthor.val() !== "" && inputAuthor.val() !== "Danielle Steel" 
 			&& inputAuthor.val() !== "Roland Emmerich" && inputGenre.val() !== "" && inputPub.val() !== ""
 			&& inputRating.val() !== ""  && inputTitle.val() !== "" 
