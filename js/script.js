@@ -15,6 +15,8 @@ jQuery(document).ready( function ($) {
 		createId (mediaArray) {
 			this.id = mediaArray.length + 1;
 		}
+
+
 	}
 
 	class MediaList {
@@ -72,7 +74,22 @@ jQuery(document).ready( function ($) {
 				publisher, rating, title, this.medialist);
 			this.medialist.push(newItem);
 		}
+
+		validateValue (prop) {
+			if (prop !== "" && prop !== null && prop !== undefined) {
+				if (prop === "Danielle Steel" || prop === "Roland Emmerich") {
+					alert("No way!");
+					return false;
+				}
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
+
+	//create instance of MediaList
+	var medialist = new MediaList(media["Items"], $(".media-container"));
 
 	//variables for form inputs
 	var inputTitle = $("#title"),
@@ -84,49 +101,61 @@ jQuery(document).ready( function ($) {
 		inputImg = $("#thumbnail"),
 		inputlist = [inputTitle, inputAuthor, inputPub, inputCat, inputGenre, inputRating, inputImg];
 
-
-	//create instance of MediaList
-	var medialist = new MediaList(media["Items"], $(".media-container"));
-
 	//process form data
 	$("#saveData").on("click", function() {
 		// var filePath = "img/" + inputImg.val().split('\\').pop();
 		//add new item with dummy image, since project is not on a webserver
-		//TODO: save image in localStorage?
-		if (checkInput()) {
+		//and image cannot be uploaded
+		if (checkInputOnSave()) {
 			//add new media item to list
 			medialist.addMedia(inputAuthor.val(), inputCat.val(),
 				inputGenre.val(), "img/dummyImg.png", inputPub.val(), 
 				parseInt(inputRating.val()), inputTitle.val());
 			console.log(medialist);
+			//hide error message if visible
+			if (!$(".bg-danger").hasClass("hidden")) {
+				$(".bg-danger").addClass("hidden");
+			}
 			//update display
 			medialist.displayMedia(medialist.medialist);
-			
 		} else {
-			//alert("check input");
+			$(".bg-danger").removeClass("hidden");
 		}
 	});
 
+	//check input on blur
+	$("input[required]").on("blur", function () {
+		//validate input and give feedback to user
+		if (medialist.validateValue($(this).val())) {
+			$(this).parent().removeClass("has-error");
+			$(this).parent().find(".glyphicon-remove").addClass("hidden");
+			$(this).parent().addClass("has-success");
+			$(this).parent().find(".glyphicon-ok").removeClass("hidden");
+		} else {
+			$(this).parent().addClass("has-error");
+			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
+		}
+	});
+
+	//reset form
 	$("#reset").on("click", function() {
 		//empty input fields
 		for (var i = 0; i < inputlist.length; i++) {
 			inputlist[i].val("");
 		}
+		//remove feedback
+		$(".form-group").removeClass("has-error").removeClass("has-success").find(".glyphicon").addClass("hidden");
 	});
 
-	function checkInput () {
-		//check if input fields have been filled
+	function checkInputOnSave () {
+		//check again if all input fields have been filled
 		if ( inputAuthor.val() !== "" && inputGenre.val() !== "" && inputPub.val() !== ""
 			&& inputRating.val() !== ""  && inputTitle.val() !== "" 
 			&& inputCat.val() !== "..." && inputCat.val() !== null) {
-			$(".form-group").removeClass("has-error");
-			$(".form-group").addClass("has-success");
 			return true;
 		} else {
-			$(".form-group").addClass("has-error");
 			return false;
 		}
 	}
-
 
 });
