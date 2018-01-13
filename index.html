@@ -23,7 +23,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#" data-toggle="modal" data-target="#modal-form"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+          <a class="navbar-brand" href="#" data-toggle="modal" data-target="#modal-form"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <span class="add-item">Add Media</span></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,16 +49,13 @@
       </div><!-- /.container-fluid -->
     </nav>
     <header id="header" class="pad-row ">
-      <h1 class="text-center text-uppercase">Anyone who says<br>they have only one life to live<br>must not know<br>how to read a book.<span><small>Author Unknown</small></span>
+      <h1 class="text-center text-uppercase">Anyone who says<br>they have only one life to live<br>must not know<br>how to read a book.<span><small>&mdash; Author Unknown &mdash;</small></span>
       </h1>
     </header><!-- /header -->
     <div class="container-fluid">
       <div class="row dark-bg pad-row-lr media-container">
-        <!-- <h2 class="text-center text-uppercase"></h2> -->
-        
-        
       </div>
-
+        <!-- Media Items here-->
     </div><!-- /.container-fluid -->
 
     <footer class="text-center dark-bg">
@@ -66,7 +64,7 @@
         <li><a href="#">Legal Info</a></li>
       </ul> -->
     </footer><!-- /footer -->
-    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -74,11 +72,47 @@
             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
           </div>
           <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <form>
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Title">
+              </div>
+              <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" placeholder="Author">
+              </div>
+              <div class="form-group">
+                <label for="publisher">Publisher</label>
+                <input type="text" class="form-control" id="publisher" placeholder="Publisher">
+              </div>
+              <div class="form-group">
+                <label for="author">Category</label>
+                <select class="form-control">
+                  <option>...</option>
+                  <option value="books">Books</option>
+                  <option value="comics">Comics</option>
+                  <option value="movies">Movies</option>
+                  <option value="music">Music</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="genre">Genre</label>
+                <input type="text" class="form-control" id="genre" placeholder="Genre">
+              </div>
+              <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" class="form-control" id="rating" placeholder="Rating">
+              </div>
+              <div class="form-group">
+                <label for="thumbnail">Thumbnail</label>
+                <input type="file" id="thumbnail">
+                <p class="help-block">Example block-level help text here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form><!--/Form -->
           </div>
         </div>
       </div>
