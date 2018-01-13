@@ -78,8 +78,8 @@ jQuery(document).ready( function ($) {
 		validateValue (prop) {
 			if (prop !== "" && prop !== null && prop !== undefined) {
 				if (prop === "Danielle Steel" || prop === "Roland Emmerich") {
-					alert("No way!");
-					return false;
+					//alert("No way! You do NOT want to add this item!");
+					return -1;
 				}
 				return true;
 			} else {
@@ -119,18 +119,26 @@ jQuery(document).ready( function ($) {
 			//update display
 			medialist.displayMedia(medialist.medialist);
 		} else {
-			$(".bg-danger").removeClass("hidden");
+			$(".bg-danger.normal-danger").removeClass("hidden");
 		}
 	});
 
 	//check input on blur
 	$("input[required]").on("blur", function () {
 		//validate input and give feedback to user
-		if (medialist.validateValue($(this).val())) {
+		if (medialist.validateValue($(this).val()) === true) {
 			$(this).parent().removeClass("has-error");
 			$(this).parent().find(".glyphicon-remove").addClass("hidden");
 			$(this).parent().addClass("has-success");
 			$(this).parent().find(".glyphicon-ok").removeClass("hidden");
+			if (!$(".bg-danger.special-danger").hasClass("hidden")) {
+				$(".bg-danger.special-danger").addClass("hidden");
+			}
+		} else if (medialist.validateValue($(this).val()) === -1) {
+			//handle special case of Danielle Steel or Roland Emmerich
+			$(".bg-danger.special-danger").removeClass("hidden");
+			$(this).parent().addClass("has-error");
+			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
 		} else {
 			$(this).parent().addClass("has-error");
 			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
@@ -149,7 +157,8 @@ jQuery(document).ready( function ($) {
 
 	function checkInputOnSave () {
 		//check again if all input fields have been filled
-		if ( inputAuthor.val() !== "" && inputGenre.val() !== "" && inputPub.val() !== ""
+		if ( inputAuthor.val() !== "" && inputAuthor.val() !== "Danielle Steel" 
+			&& inputAuthor.val() !== "Roland Emmerich" && inputGenre.val() !== "" && inputPub.val() !== ""
 			&& inputRating.val() !== ""  && inputTitle.val() !== "" 
 			&& inputCat.val() !== "..." && inputCat.val() !== null) {
 			return true;
