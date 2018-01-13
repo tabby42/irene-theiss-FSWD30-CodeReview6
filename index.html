@@ -73,22 +73,23 @@
           </div>
           <div class="modal-body">
             <form accept-charset="utf-8" onsubmit="return false;">
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Title">
+              <div class="form-group has-feedback">
+                <label for="title">Title *</label>
+                <input type="text" class="form-control" id="title" placeholder="Title" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
               </div>
               <div class="form-group">
-                <label for="author">Author</label>
-                <input type="text" class="form-control" id="author" placeholder="Author">
+                <label for="author">Author *</label>
+                <input type="text" class="form-control" id="author" placeholder="Author" >
               </div>
               <div class="form-group">
-                <label for="publisher">Publisher</label>
-                <input type="text" class="form-control" id="publisher" placeholder="Publisher">
+                <label for="publisher">Publisher*</label>
+                <input type="text" class="form-control" id="publisher" placeholder="Publisher" required>
               </div>
               <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">Category *</label>
                 <select class="form-control" id="category">
-                  <option>...</option>
+                  <option value="...">...</option>
                   <option value="books">Books</option>
                   <option value="comics">Comics</option>
                   <option value="movies">Movies</option>
@@ -96,12 +97,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="genre">Genre</label>
-                <input type="text" class="form-control" id="genre" placeholder="Genre">
+                <label for="genre">Genre *</label>
+                <input type="text" class="form-control" id="genre" placeholder="Genre" required>
               </div>
               <div class="form-group">
-                <label for="rating">Rating</label>
-                <input type="number" class="form-control" id="rating" placeholder="Rating">
+                <label for="rating">Rating *</label>
+                <input type="number" class="form-control" id="rating" placeholder="Rating" required>
               </div>
               <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
@@ -109,7 +110,7 @@
                 <p class="help-block">Example block-level help text here.</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" id="reset">Reset</button>
                 <button type="submit" id="saveData" class="btn btn-primary">Save</button>
               </div>
             </form><!--/Form -->
