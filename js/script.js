@@ -1,10 +1,21 @@
 jQuery(document).ready( function ($) {
-	console.log(media);
-	// class MediaItem {
-	// 	constructor(id, title, author, genre, publisher, imageURL, rating) {
+	//console.log(media);
+	class MediaItem {
+		constructor(id, title, author, genre, publisher, imageURL, rating, category, medialist) {
+			this.title = title;
+			this.author = author;
+			this.genre = genre;
+			this.publisher = publisher;
+			this.image = imageURL;
+			this.rating = rating;
+			this.category = category;
+			createId(medialist);
+		}
 
-	// 	}
-	// }
+		createId (mediaArray) {
+			this.id = mediaArray.length + 1;
+		}
+	}
 
 	class MediaList {
 		constructor (medialist, wrapper) {
@@ -54,7 +65,7 @@ jQuery(document).ready( function ($) {
 		}
 
 		addMedia () {
-			
+
 		}
 	}
 
