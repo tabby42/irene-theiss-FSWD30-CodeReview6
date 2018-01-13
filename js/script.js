@@ -15,8 +15,6 @@ jQuery(document).ready( function ($) {
 		createId (mediaArray) {
 			this.id = mediaArray.length + 1;
 		}
-
-
 	}
 
 	class MediaList {
@@ -29,7 +27,7 @@ jQuery(document).ready( function ($) {
 		itemTemplate (id, title, author, genre, publisher, imageURL, rating, category) {
 			//fill HTML Template with data from medialist
 			var tpl = `
-				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 media-item" data-id="${id}">
+				<div class="col-lg-3 col-md-4 col-sm-6 media-item" data-id="${id}">
             		<div class="media">
 					  <div class="media-center">
 					      <img class="media-object thumbnail" src="${imageURL}" alt="Media Thumbnail">
@@ -78,7 +76,6 @@ jQuery(document).ready( function ($) {
 		validateValue (prop) {
 			if (prop !== "" && prop !== null && prop !== undefined) {
 				if (prop === "Danielle Steel" || prop === "Roland Emmerich") {
-					//alert("No way! You do NOT want to add this item!");
 					return -1;
 				}
 				return true;
@@ -123,14 +120,11 @@ jQuery(document).ready( function ($) {
 		}
 	});
 
-	//check input on blur
-	$("input[required]").on("blur", function () {
+	//check text input on blur
+	$("input[type='text']").on("blur", function () {
 		//validate input and give feedback to user
 		if (medialist.validateValue($(this).val()) === true) {
-			$(this).parent().removeClass("has-error");
-			$(this).parent().find(".glyphicon-remove").addClass("hidden");
-			$(this).parent().addClass("has-success");
-			$(this).parent().find(".glyphicon-ok").removeClass("hidden");
+			caseSuccess($(this));
 			if (!$(".bg-danger.special-danger").hasClass("hidden")) {
 				$(".bg-danger.special-danger").addClass("hidden");
 			}
@@ -140,8 +134,18 @@ jQuery(document).ready( function ($) {
 			$(this).parent().addClass("has-error");
 			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
 		} else {
-			$(this).parent().addClass("has-error");
-			$(this).parent().find(".glyphicon-remove").removeClass("hidden");
+			caseError($(this));
+		}
+	});
+
+	//check number input on blur
+	$("input[type='number']").on("blur", function () {
+		var value = parseInt($(this).val());
+		//validate input and give feedback to user
+		if (value !== NaN && value >= 1 && value <= 5) {
+			caseSuccess($(this));
+		} else {
+			caseError($(this));
 		}
 	});
 
@@ -167,4 +171,18 @@ jQuery(document).ready( function ($) {
 		}
 	}
 
+	//helpers for input validation feedback
+	function caseSuccess (elem) {
+		elem.parent().removeClass("has-error");
+		elem.parent().find(".glyphicon-remove").addClass("hidden");
+		elem.parent().addClass("has-success");
+		elem.parent().find(".glyphicon-ok").removeClass("hidden");
+	}
+
+	function caseError (elem) {
+		elem.parent().removeClass("has-success");
+		elem.parent().find(".glyphicon-ok").addClass("hidden");
+		elem.parent().addClass("has-error");
+		elem.parent().find(".glyphicon-remove").removeClass("hidden");
+	}
 });
