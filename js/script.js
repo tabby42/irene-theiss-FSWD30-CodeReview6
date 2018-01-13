@@ -94,7 +94,7 @@ jQuery(document).ready( function ($) {
 	var medialist = new MediaList(media["Items"], $(".media-container"));
 
 	/*
-	**+	Process and validate form input  ***
+	***	Process and validate form data  ***
 	*/
 	//variables for form inputs
 	var inputTitle = $("#title"),
@@ -210,7 +210,6 @@ jQuery(document).ready( function ($) {
 	});
 
 	$("#fillBaloney").on("click", function () {
-		//inputlist = [inputTitle, inputAuthor, inputPub, inputCat, inputGenre, inputRating, inputImg];
 		inputTitle.val("");
 		inputAuthor.val("Danielle Steel");
 		inputPub.val("foo");
