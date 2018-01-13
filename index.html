@@ -17,12 +17,12 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+         <!--  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
+          </button> -->
           <a class="navbar-brand" href="#" data-toggle="modal" data-target="#modal-form"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             <span class="add-item">Add Media</span></a>
         </div>
@@ -105,14 +105,14 @@
               </div>
               <div class="form-group has-feedback">
                 <label for="rating">Rating *</label>
-                <input type="number" class="form-control" id="rating" placeholder="Rating" required>
+                <input type="number" class="form-control" id="rating" placeholder="Rating" required min="1" max="5">
+                <p class="help-block">Rate media from 1 to 5</p>
                 <span class="glyphicon glyphicon-ok form-control-feedback hidden" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-remove form-control-feedback hidden" aria-hidden="true"></span>
               </div>
               <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
                 <input type="file" id="thumbnail">
-                <!-- <p class="help-block">Example block-level help text here.</p> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="reset">Reset</button>
