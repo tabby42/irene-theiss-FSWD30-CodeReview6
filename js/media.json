@@ -50,21 +50,42 @@ var media = {
         "author": "George Lucas",
         "genre": "Science Fiction",
         "publisher": "Disney",
-        "image": "img/dummyImg.png",  
+        "image": "img/lastjedi.jpg",  
         "rating": 3,
         "category": "Movies",
         "tags": ["new", "sequel"]
-        }
-        ,
+        },
         {
         "id": 6,
         "title": "Some like it hot",
         "author": "Billy Wilder",
         "genre": "Comedy",
-        "publisher": "Metro Goldwyn Meyer",
-        "image": "img/dummyImg.png",  
+        "publisher": "Ashton Productions",
+        "image": "img/somelike.jpg",  
         "rating": 4,
         "category": "Movies",
+        "tags": ["classic", "screwball"]
+        },
+        {
+        "id": 7,
+        "title": "Stranger than Fiction",
+        "author": "Bad Religion",
+        "genre": "punk",
+        "publisher": "Dragnet",
+        "image": "img/stranger.jpg",  
+        "rating": 4,
+        "category": "Music",
+        "tags": ["classic", "screwball"]
+        },
+        {
+        "id": 8,
+        "title": "Radiance",
+        "author": "Keith Jarrett",
+        "genre": "Jazz",
+        "publisher": "ECM",
+        "image": "img/radiance.jpg",  
+        "rating": 5,
+        "category": "Music",
         "tags": ["classic", "screwball"]
         }
     ]
